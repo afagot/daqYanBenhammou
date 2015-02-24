@@ -1,0 +1,32 @@
+// **********************************************************************
+// *   v560 
+// *   YBenhammou
+// *   04/2010
+// **********************************************************************
+#ifndef __LINUX
+#define __LINUX
+#endif
+
+#include "CAENVMElib.h"
+#include "v1718.h"
+#include <iostream>
+using namespace std;
+
+#ifndef _v560_h
+#define _v560_h
+class v560
+{
+ private : 
+  long		            m_handle;
+  unsigned long             m_address;
+  CVDataWidth               m_dataWidth;
+  CVAddressModifier         m_addressModifier;               
+ public:
+  v560(long handle,unsigned long address);
+  ~v560();
+  
+  int GetSerialNumber();
+  int GetChannel(int channel);
+  void Reset();
+};		
+#endif

@@ -1,0 +1,68 @@
+//////////////////////////////////////////
+//This class created by Yonathan Munwes///
+//      for stgc daq at 10/01/10       ///
+//////////////////////////////////////////
+
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <online.h>
+#include <sstream>
+#include <stdlib.h>
+//#include <general.h>
+#include <MsgSvc.h>
+
+enum ModuleType {
+  MODULE_QDC,
+  MODULE_TMC,
+  MODULE_TDC,
+  MODULE_SCALER,
+  MODULE_IO
+};
+
+using namespace std;
+
+class Parameter {
+private :
+  int            m_nQdc;
+  int            m_nTmc;
+  int            m_nTdc;
+  int            m_nScaler;
+  int            m_nIO;
+  unsigned long  *m_baseAddressQdc;
+  unsigned long  *m_baseAddressTmc;
+  unsigned long  *m_baseAddressTdc;
+  unsigned long  *m_baseAddressScaler;
+  unsigned long  *m_baseAddressIO;
+  //bool           *m_dcOn; 
+  string         m_outputPath;
+  string         m_folder;
+  string         m_setup;
+public :
+//  Parameter::Parameter(string path);
+  Parameter(string path);
+  ~Parameter();
+  int getNQdc();
+  int getNTmc();
+  int getNTdc();
+  int getNScaler();
+  int getNIO();
+  //bool *getDcOn();
+  string getFilePath();
+  string getFolderPath();
+  unsigned long *getAddress(ModuleType module);
+  string getRunCount();
+  void openQdcFiles(ofstream &outputfile ,string runcount,int i);
+  void openTdcFiles(ofstream &outputfile ,string runcount,int i);
+  void openTdcFilesR(ifstream &inputfile ,string runcount,int i);
+  void openFiles(ofstream &outputfile ,string module, string runcount,int i);
+  bool getStopDaq();
+  string getSetup();
+};
+
+  
+
+    
+  
+    

@@ -1,0 +1,49 @@
+// **********************************************************************
+// *   v792 
+// *   Y.Benhammou
+// *   18/04/2012
+// **********************************************************************
+#ifndef __LINUX
+#define __LINUX
+#endif
+
+#include "CAENVMElib.h"
+#include <iostream>
+#include "tstamp.h"
+#include "universe.h"
+#include <sys/timeb.h>
+#include <time.h>
+#include <sys/time.h>
+
+using namespace std;
+
+
+#ifndef _v262_h
+#define _v262_h
+class v262
+{
+ private : 
+  long			m_handle;
+  unsigned long 	m_address;
+  CVDataWidth		m_dataWidth;
+  CVAddressModifier 	m_addressModifier;
+  time_t		m_date;
+  timeval		m_start;
+  timeval		m_last;
+  
+ public:
+  v262(long handle,unsigned long address);
+  ~v262();
+  int SetNIMPulse(int);
+  int ClearScale();
+  unsigned long GetData(int);
+  unsigned long *GetData();
+  void GetSerialNumber();
+  char * GetFullDate();
+  double GetTotalTime();
+  double GetDeltaTime();
+  void ResetTimer();
+  
+};
+#endif
+		
